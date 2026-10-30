@@ -1,4 +1,3 @@
-# Synchronization_Mechanisms-PGC
 # Analyzing Synchronization Mechanisms in Parallel Programs
 
 ![Language](https://img.shields.io/badge/language-C-blue)
@@ -73,7 +72,7 @@ To add 1, a friend must: **read** the number, **add 1**, then **write** it back.
 ## 4. Repository Structure
 
 ```
-sync-mechanisms-openmp/
+Synchronization_Mechanisms-PGC/
 ├── README.md
 ├── race.c              # Program 1: race condition (no synchronization)
 ├── critical.c          # Program 2: critical section
@@ -81,19 +80,18 @@ sync-mechanisms-openmp/
 ├── barrier.c           # Program 4: barrier
 ├── semaphore.c         # Program 5: semaphore
 ├── compare_sync.c      # Program 6: benchmark of all mechanisms
-├── screenshots/        # Terminal output of every program
+├── screenshot/         # Terminal output of every program
 │   ├── 1_race.jpeg
 │   ├── 2_critical.png
 │   ├── 3_atomic.png
 │   ├── 4_barrier.png
 │   ├── 5_semaphore.png
 │   └── 6_compare_sync.png
-└── graphs/             # Graphs generated from the benchmark results
+└── graph/              # Graphs generated from the benchmark results
     ├── graph1_time_vs_threads.png
     ├── graph2_time_bar_comparison.png
     ├── graph3_race_correctness.png
-    ├── graph4_slowdown_vs_atomic.png
-    └── make_graphs.py
+    └── graph4_slowdown_vs_atomic.png
 ```
 
 ---
@@ -167,35 +165,35 @@ Three runs with 4 threads gave three different wrong answers (the correct value 
 | 2 | 3,113,303 |
 | 3 | 3,775,812 |
 
-![Race condition](screenshots/1_race.jpeg)
+![Race condition](screenshot/1_race.jpeg)
 
 ### 8.2 Critical section
 
 Correct result, `real` time **0.815 s** with 4 threads.
 
-![Critical section](screenshots/2_critical.png)
+![Critical section](screenshot/2_critical.png)
 
 ### 8.3 Atomic operation
 
 Correct result, `real` time **0.352 s** with 4 threads, about 2.3x faster than critical.
 
-![Atomic operation](screenshots/3_atomic.png)
+![Atomic operation](screenshot/3_atomic.png)
 
 ### 8.4 Barrier
 
 All four "before barrier" lines are printed before any "after barrier" line, which proves that no thread passed the barrier until every thread had reached it.
 
-![Barrier](screenshots/4_barrier.png)
+![Barrier](screenshot/4_barrier.png)
 
 ### 8.5 Semaphore
 
 Two threads x 100,000 increments gave the correct `Counter=200000`.
 
-![Semaphore](screenshots/5_semaphore.png)
+![Semaphore](screenshot/5_semaphore.png)
 
 ### 8.6 Comparison benchmark
 
-![Comparison benchmark](screenshots/6_compare_sync.png)
+![Comparison benchmark](screenshot/6_compare_sync.png)
 
 | Mechanism | Threads | Final Count | Correctness | Time (s) |
 |---|---|---|---|---|
@@ -223,18 +221,18 @@ Two threads x 100,000 increments gave the correct `Counter=200000`.
 ## 9. Graphs
 
 ### Execution time vs number of threads
-![Time vs threads](graphs/graph1_time_vs_threads.png)
+![Time vs threads](graph/graph1_time_vs_threads.png)
 
 ### Time comparison at each thread count
-![Time bar comparison](graphs/graph2_time_bar_comparison.png)
+![Time bar comparison](graph/graph2_time_bar_comparison.png)
 
 ### Race condition: final count vs expected
-![Race correctness](graphs/graph3_race_correctness.png)
+![Race correctness](graph/graph3_race_correctness.png)
 
 ### How much slower are Critical and Lock than Atomic?
-![Slowdown vs Atomic](graphs/graph4_slowdown_vs_atomic.png)
+![Slowdown vs Atomic](graph/graph4_slowdown_vs_atomic.png)
 
-The graphs are produced by `graphs/make_graphs.py` (Python + matplotlib) from the benchmark table above.
+The graphs were generated with Python (matplotlib) from the benchmark table above.
 
 ---
 
