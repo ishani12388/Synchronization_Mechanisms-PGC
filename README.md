@@ -280,5 +280,7 @@ Atomic operations give the best balance of correctness and speed for simple shar
 ## 14. Author
 
 **Name:** Ishani Goudar
+
 **Course:** Parallel Computing
+
 **Experiment:** Analyze Synchronization Mechanisms in Parallel Programs
